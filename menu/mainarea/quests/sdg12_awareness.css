@@ -1,0 +1,89 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: none; /* hide default cursor */
+}
+
+body{
+    margin:0;
+    padding: 0;
+    font-family:Arial;
+    background:#e8f5e9;
+    overflow:hidden;
+    cursor:none; /* hide default cursor */
+}
+
+#game {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #e8f5e9;
+}
+
+/* UI always on top */
+
+#ui {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background: rgba(255,255,255,0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+/* trash objects */
+
+.trash{
+    position:absolute;
+    font-size:40px;
+    cursor:pointer;
+}
+
+/* custom cursor */
+
+#trashCursor {
+    position: fixed;
+    font-size: 32px;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+/* start overlay */
+
+#startOverlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.8);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+    text-align:center;
+}
+
+#startOverlay h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+#startOverlay button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:6px;
+    background:#4CAF50;
+    color:white;
+    cursor:pointer;
+}
+
+#startOverlay button:hover{
+    background:#45a049;
+}

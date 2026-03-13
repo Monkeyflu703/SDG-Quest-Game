@@ -1,0 +1,389 @@
+/* ===== GLOBAL ===== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* prevents scroll */
+    font-family: 'Trebuchet MS', sans-serif;
+    background: url('https://i.pinimg.com/736x/a5/b3/97/a5b397f2a95d5a058d1a4909caec9877.jpg') no-repeat center center/cover;
+    background-size: cover;
+    color: #f5e6c8;
+}
+
+/* Dark overlay */
+#backgroundOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Hidden utility */
+.hidden {
+    display: none !important;
+}
+
+/* START SCREEN */
+#startScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+}
+
+#startScreen h1 {
+    font-size: 48px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px gold;
+}
+
+#startBtn {
+    padding: 14px 40px;
+    font-size: 18px;
+    background: linear-gradient(145deg, #7b5e2e, #b89245);
+    border: 2px solid #e6c37a;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#startBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px gold;
+}
+
+/* GAME UI */
+#gameUI {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(30, 20, 10, 0.8);
+    border-bottom: 3px solid #b89245;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Currency style */
+.currency {
+    font-size: 20px;
+    font-weight: bold;
+    color: gold;
+    text-shadow: 0 0 5px #ffcc00;
+}
+
+/* Icon button */
+.icon-btn {
+    font-size: 22px;
+    padding: 8px 15px;
+    background: #3e2b14;
+    border: 2px solid #b89245;
+    border-radius: 6px;
+    color: #f5e6c8;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    background: #5a3d1a;
+    box-shadow: 0 0 10px gold;
+}
+
+/* ===== MAIN AREA ===== */
+#main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+#main-area h2 {
+    font-size: 28px;
+    text-shadow: 0 0 10px #ffcc66;
+}
+
+/* ===== QUEST POPUP ===== */
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup.active {
+    display: flex;
+}
+
+/* RPG panel style */
+.popup-content {
+    background: linear-gradient(145deg, #2b1d0e, #3a2712);
+    border: 3px solid #b89245;
+    border-radius: 12px;
+    padding: 25px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+.popup-content h2 {
+    margin-top: 0;
+    text-align: center;
+    color: gold;
+}
+
+/* Quest list */
+.popup-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;      /* allow scrolling if too many quests */
+    overflow-y: auto;
+}
+
+.popup-content li {
+    background: rgba(0,0,0,0.6); /* slightly more visible */
+    color: #fff;                 /* text must be visible */
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 4px solid gold;
+    border-radius: 4px;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 22px;
+    cursor: pointer;
+    color: gold;
+}
+
+/* Exit button on start screen */
+#exitStartBtn {
+    margin-top: 15px;
+    padding: 12px 35px;
+    font-size: 16px;
+    background: linear-gradient(145deg, #b53e3e, #ff6f6f);
+    border: 2px solid #ff9999;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#exitStartBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px red;
+}
+
+/* Exit button inside Options popup */
+#optionsPopup .icon-btn {
+    display: block;
+    margin: 15px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: linear-gradient(145deg, #b53e3e, #ff6f6f);
+    border: 2px solid #ff9999;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.3s;
+}
+
+#optionsPopup .icon-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px red;
+}
+
+/* ========================= */
+/* DEVICE SELECTION SCREEN */
+/* ========================= */
+#deviceSelect {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;   /* must be none */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+#deviceSelect h2 {
+    font-size: 36px;
+    color: gold;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px gold;
+}
+
+.device-btn {
+    padding: 14px 50px;
+    margin: 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 2px solid #b89245;
+    background: linear-gradient(145deg, #7b5e2e, #b89245);
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.device-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px gold;
+}
+
+/* ========================= */
+/* LOADING SCREEN */
+/* ========================= */
+#loadingOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: none; /* ✅ MUST be none by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid rgba(255,255,255,0.2);
+    border-top: 8px solid gold;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+#loadingOverlay p {
+    font-size: 20px;
+    color: gold;
+    text-shadow: 0 0 10px #ffcc66;
+}
+
+/* ========================= */
+/* MINI GAME WINDOWS */
+/* ========================= */
+
+#gameContainer {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    align-items: flex-start; /* important */
+    overflow: hidden;
+    position: relative;
+}
+
+/* draggable windows */
+.game-window {
+    position: absolute;
+    width: 500px;
+    height: 420px;
+    background: #1e140a;
+    border: 2px solid #b89245;
+    border-radius: 8px;
+    overflow: hidden; /* prevent extra scrollbars */
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    top: 0;
+}
+
+/* header like a browser tab bar */
+.game-header {
+    background: #3e2b14;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #b89245;
+    font-size: 14px;
+    cursor: grab;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.game-header:active {
+    cursor: grabbing;
+}
+
+.game-header .close-btn {
+    font-size: 18px;
+    color: #f5e6c8;
+    cursor: pointer;
+}
+
+/* game content */
+.game-body {
+    flex: 1;             /* take remaining space */
+    position: relative;
+    overflow: hidden;    /* prevent extra scrollbars */
+    min-height: 0;       /* important for flex layouts */
+}
+
+.game-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;      /* fix extra inline spacing */
+}
+
+/* legend under the game */
+
+.game-legend{
+    background:#2b1d0e;
+    border-top:2px solid #b89245;
+    padding:6px 10px;
+    font-size:12px;
+    color:#f5e6c8;
+}
+
+.game-legend div{
+    margin:2px 0;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 600px) {
+    #startScreen h1 {
+        font-size: 34px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .main-area {
+        margin-top: 0;
+    }
+
+}

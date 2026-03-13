@@ -1,0 +1,127 @@
+/* ============================= */
+/* GAME MENU - RPG STYLE          */
+/* ============================= */
+
+/* Body & background */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: url('https://i.pinimg.com/1200x/aa/8e/24/aa8e24f977ed628e464f62c4e22bd8b7.jpg') no-repeat center center fixed; /* Fantasy BG */
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0 20px;
+    text-shadow: 1px 1px 4px #000;
+}
+
+/* Page heading */
+h1 {
+    margin-bottom: 40px;
+    font-size: 48px;
+    text-align: center;
+    color: #ffdd55;
+    text-shadow: 2px 2px #000, 0 0 10px #ffdd55;
+    letter-spacing: 2px;
+}
+
+/* Menu container */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* RPG-style buttons */
+.menu button {
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    border: 2px solid #ffd700;
+    background: linear-gradient(145deg, rgba(255,215,0,0.2), rgba(255,140,0,0.2));
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px #ffd700, 0 0 20px rgba(255,215,0,0.4);
+}
+
+/* Hover effect */
+.menu button:hover {
+    background: linear-gradient(145deg, #ffd700, #ffa500);
+    color: #222;
+    box-shadow: 0 0 20px #ffd700, 0 0 40px rgba(255,215,0,0.6);
+    transform: translateY(-2px);
+}
+
+/* Responsive for smaller screens */
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+
+    .menu button {
+        height: 50px;
+        font-size: 16px;
+    }
+}
+
+/* ========================= */
+/* LOADING OVERLAY STYLES    */
+/* ========================= */
+
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;  /* will show dynamically */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    flex-direction: column;
+}
+
+/* Loader container */
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glowing RPG spinner */
+.spinner {
+    width: 70px;
+    height: 70px;
+    border: 6px solid rgba(255, 215, 0, 0.2);
+    border-top: 6px solid #ffd700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px #ffd700, 0 0 30px rgba(255,215,0,0.5);
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.loader-container p {
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #ffd700;
+    text-shadow: 1px 1px 6px #000, 0 0 10px #ffd700;
+}
