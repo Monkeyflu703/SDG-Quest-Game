@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
 import random
 
 app = Flask(__name__)
@@ -228,4 +229,6 @@ def answer():
 
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    # use PORT environment variable if provided (Render/Railway)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
