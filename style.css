@@ -1,0 +1,607 @@
+:root {
+
+    /* Background */
+    --bg-image: url('https://i.pinimg.com/1200x/aa/8e/24/aa8e24f977ed628e464f62c4e22bd8b7.jpg');
+
+    /* Main colors */
+    --primary: #ffd700;
+    --secondary: #ffa500;
+    --text-light: #ffffff;
+    --text-dark: #222;
+
+    /* Button */
+    --btn-gradient: linear-gradient(145deg, rgba(255,215,0,0.2), rgba(255,140,0,0.2));
+    --btn-hover: linear-gradient(145deg, #ffd700, #ffa500);
+
+    /* Shadows */
+    --glow: 0 0 10px #ffd700, 0 0 20px rgba(255,215,0,0.4);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+    margin: 0;
+    background: var(--bg-image) no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-light);
+    } 
+
+    /* Header Container */
+    header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: rgba(0,0,0,0.65);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 0 15px rgba(255,215,0,0.4);
+    border-bottom: 2px solid var(--primary);
+    }
+
+    /* Logo */
+    .logo {
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary);
+    text-shadow: 1px 1px 6px #000;
+    }
+
+    /* Nav */
+    .header-nav {
+    display: flex;
+    gap: 30px;
+    color: var(--text-light);
+    }
+
+    .header-nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+    }
+
+    .header-nav a:hover {
+    color: #ffd700;
+    }
+
+    /* Right Section */
+    .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    }
+
+    .user-auth {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* space between avatar and buttons */
+    }
+
+    .user-auth .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+    }
+
+    .user-auth .login-btn-modal {
+        height: 40px;
+        padding: 0 35px;
+        background: transparent;
+        border: 2px solid #fff;
+        border-radius: 20px;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+        transition: .5s;
+    }
+
+    .user-auth .login-btn-modal:hover {
+        background: #fff;
+        color: #222;
+    }
+
+    .play-now-btn {
+
+    padding: 18px 60px;
+    font-size: 22px;
+    font-weight: bold;
+
+    border-radius: 12px;
+    border: 2px solid var(--primary);
+
+    background: var(--btn-gradient);
+    color: #fff;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    box-shadow: var(--glow);
+}
+
+    .play-now-btn:hover {
+    background: var(--btn-hover);
+    color: #222;
+    transform: translateY(-2px);
+}
+
+    .user-auth .forum-btn {
+        background-color: #2196F3;
+        border: none;
+        height: 40px;
+        min-width: 150px;
+        max-width: 100%;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.5s;
+        text-decoration: none;
+    }
+
+    section {
+        min-height: 30vh;
+        height: 30vh;
+        padding: 0 100px;
+        position: relative;
+    }
+
+    section h1 {
+        color: var(--primary);
+        font-size: 42px;
+        position: absolute;
+        bottom: 40px;
+        font-weight: 600;
+         text-shadow:
+        2px 2px #000,
+        0 0 10px var(--primary);
+    }
+
+    .auth-modal {
+        position: fixed;
+        width: 420px;
+        height: 440px;
+        background: rgba(0,0,0,0.75);
+        border: 2px solid var(--primary);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(255,215,0,0.5);
+        backdrop-filter: blur(10px);
+        color: #fff;
+        inset: 0;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        transform: scale(0);
+        transition: height .2s ease, transform .5s ease;
+        box-sizing: border-box;
+    }
+
+    .auth-modal.show {
+        transform: scale(1); 
+    }
+
+    .auth-modal.slide {
+        height: 520px;
+    }
+
+    .auth-modal .form-box{
+        width: 100%;
+        padding: 40px;
+    }
+
+    .auth-modal .form-box.login, 
+    .auth-modal.slide .form-box.register {
+        transform: translateX(0);
+        transition: transform .18s ease;
+    }
+
+    .auth-modal.slide .form-box.login {
+        transition: none;
+        transform: translateX(-400px);
+    }
+
+    .auth-modal .form-box.register {
+        position: absolute;
+        transform: translateX(400px);
+    }    
+
+    .form-box h2 {
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .input-box {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin: 30px 0;
+    }
+
+    .input-box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: 2px solid rgba(255,215,0,0.5);
+        outline: none;
+        border-radius: 40px;
+        padding: 20px 45px 20px 20px;
+        font-size: 16px;
+        color: #fff;
+    }
+
+    .input-box input:focus {
+    border-color: var(--primary);
+    }   
+
+    .input-box i {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        height: 45px;
+        background: #fff;
+        border: none;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        color: #222;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .testbtn {
+        color: white;
+        font-size: 15px;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .testbtn:hover {
+    background-color: #059862;
+    }
+
+    .form-box p {
+        text-align: center;
+        font-size: 14.5px;
+        margin: 25p 0px 10px;
+    }
+
+    .form-box p a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .auth-modal .close-btn-modal {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 45px;
+        height: 45px;
+        background: #fff;
+        border: none;
+        border-bottom-left-radius: 20px;
+        font-size: 35px;
+        color: #222;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    /* Profile Box */
+    .profile-box {
+    position: relative;
+    }
+
+    .profile-box .avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #4CAF50;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    }
+
+    .profile-box .dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: #fff;
+    color: #222;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    }
+
+    .profile-box.show .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    }
+
+    .profile-box .dropdown a {
+    padding: 8px 20px;
+    text-decoration: none;
+    color: #222;
+    }
+
+    .profile-box .dropdown a:hover {
+    background: #f0f0f0;
+    }
+
+    .alert-box {
+        position: fixed;
+        inset: 0;
+        top: 35px;
+        margin: 0 auto;
+        width: 350px;
+        height: 70px;
+        background: #fff;
+        border-radius: 6px;
+        padding: 0 15px;
+        z-index: 999;
+        overflow: hidden;
+        transform: translateY(calc(-100% - 35px ));
+        transition: .5s ease;
+        box-sizing: border-box;
+    }
+
+    .alert-box.show {
+        transform: translateY(0);
+    }
+
+    .alert {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        color: #222;
+        font-weight: 500;
+    }
+
+    .alert::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: #0abf30;
+        animation: progress 6s linear forwards;
+    }
+
+    .alert.error::after {
+        background: #f00;
+    }
+
+    @keyframes progress {
+        100% {
+            width: 0;
+        }
+    }
+
+    .alert i {
+        font-size: 35px;
+        color: #0abf30;
+        margin-right: 8px;
+    }
+
+    .alert.error i {
+        background: #f00;
+    }
+
+    /* Hamburger icon */
+    .hamburger {
+        display: none; /* hidden on desktop */
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    /* Centered Play Now button */
+    .menu-section {
+        height: calc(100vh - 80px); /* header height */
+        margin-top: 80px; /* match header height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu-section .play-now-btn {
+        font-size: 22px;
+        padding: 20px 50px;
+    }
+
+    /* ========================
+   Mobile-Friendly Adjustments
+    ========================= */
+
+    /* Base adjustments for small screens */
+    @media screen and (max-width: 900px) {
+        /* Header */
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 15px 20px;
+            z-index: 200;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        .header-nav {
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 220px;
+            background: rgba(255,255,255,0.95);
+            padding: 100px 20px 20px 20px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 150;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        }
+
+        .header-nav.active {
+            transform: translateX(0);
+        }
+
+        .header-nav a {
+            font-size: 14px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .header-nav a:hover {
+            color: #ffd700;
+        }
+
+        .header-right {
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+            align-items: flex-start;
+        }
+
+        .user-auth .login-btn-modal,
+        .user-auth .play-now-btn,
+        .user-auth .forum-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+
+    /* Adjustments for very small screens (mobile phones) */
+    @media screen and (max-width: 500px) {
+        header {
+            padding: 10px 15px;
+        }
+
+        .logo {
+            font-size: 20px;
+        }
+
+        .header-nav {
+            gap: 10px;
+        }
+
+        .header-nav a {
+            font-size: 12px;
+        }
+
+        section {
+            padding: 0 15px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        section h1 {
+            font-size: 20px;
+            bottom: 20px;
+        }
+
+        .auth-modal {
+            width: 90%;
+            height: auto;
+            padding: 20px;
+        }
+
+        .auth-modal .form-box {
+            padding: 20px;
+        }
+
+        .input-box input {
+            padding: 15px 40px 15px 15px;
+            font-size: 14px;
+        }
+
+        .btn {
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .profile-box .avatar-circle {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            font-size: 14px;
+        }
+
+        .profile-box .dropdown {
+            top: 40px;
+            right: 0;
+            padding: 5px 0;
+        }
+
+        .profile-box .dropdown a {
+            padding: 6px 15px;
+            font-size: 14px;
+        }
+
+        .alert-box {
+            width: 90%;
+            left: 5%;
+            right: 5%;
+            height: 60px;
+        }
+
+        .alert i {
+            font-size: 28px;
+        }
+    }
+
+    /* Optional: reduce gaps on smaller screens */
+    @media screen and (max-width: 600px) {
+        .header-nav {
+            gap: 8px;
+        }
+
+        .user-auth {
+            gap: 8px;
+        }
+
+        .menu button {
+            height: 50px;
+            font-size: 16px;
+        }
+    }
